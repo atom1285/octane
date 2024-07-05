@@ -39,7 +39,7 @@ class WorkerTest extends TestCase
         $this->assertNull($responses[2]->result);
     }
 
-    /** @doesNotPerformAssertions  @test */
+    /** @doesNotPerformAssertions @test */
     public function test_worker_can_dispatch_ticks_to_application_and_returns_responses_to_client()
     {
         [$app, $worker, $client] = $this->createOctaneContext([
