@@ -3,7 +3,6 @@
 namespace Laravel\Octane\Tests;
 
 use Illuminate\Http\Request;
-use PHPUnit\Framework\Attributes\RunInSeparateProcess;
 
 class WorkerTest extends TestCase
 {
@@ -14,8 +13,8 @@ class WorkerTest extends TestCase
             Request::create('/second', 'GET'),
         ]);
 
-        $app['router']->get('/first', fn() => 'First Response');
-        $app['router']->get('/second', fn() => 'Second Response');
+        $app['router']->get('/first', fn () => 'First Response');
+        $app['router']->get('/second', fn () => 'Second Response');
 
         $worker->run();
 
@@ -27,8 +26,8 @@ class WorkerTest extends TestCase
     public function test_worker_can_dispatch_task_to_application_and_returns_responses_to_client()
     {
         [$app, $worker, $client] = $this->createOctaneContext([
-            fn() => 'foo',
-            fn() => 'bar',
+            fn () => 'foo',
+            fn () => 'bar',
             function () {
             },
         ]);
